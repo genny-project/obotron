@@ -1,0 +1,10 @@
+life/genny/obotron/search/SearchCaching.class
+life/genny/obotron/testing/TestService.class
+life/genny/obotron/setupBaseEntitys/GennyService.class
+life/genny/obotron/constants/ObotronConstants.class
+life/genny/obotron/cache/RoleCaching.class
+life/genny/obotron/search/TimerEventCaching.class
+life/genny/obotron/route/Events.class
+life/genny/obotron/testing/TestServiceImpl.class
+life/genny/obotron/live/data/InternalConsumer.class
+META-INF/panache-archive.marker

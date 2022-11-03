@@ -1,0 +1,41 @@
+syntax = "proto2"; 
+package org.kie.kogito.app; 
+import "kogito-types.proto";
+
+message S2SData { 
+	option java_package = "life.genny.kogito.common.models";
+	optional EAbortReason abortReason = 1; 
+	optional string buttonEvents = 2; 
+	optional string location = 3; 
+	optional string parent = 4; 
+	optional string pcmCode = 5; 
+	optional string productCode = 6; 
+	optional string questionCode = 7; 
+	optional string sourceCode = 8; 
+	optional string targetCode = 9; 
+	optional TimerData timerData = 10; 
+	optional string token = 11; 
+}
+message TimerData { 
+	option java_package = "life.genny.kogito.common.models";
+	optional TimerEvent currentMilestone = 1; 
+	optional int64 elapsedMin = 2; 
+	optional bool expired = 3; 
+	optional int64 expiryMin = 4; 
+	optional int64 expiryTimeStamp = 5; 
+	optional int64 intervalMin = 6; 
+	optional int64 startEpoch = 7; 
+	repeated TimerEvent timerEventsArray = 8; 
+}
+message TimerEvent { 
+	option java_package = "life.genny.kogito.common.models";
+	optional int64 timeStamp = 1; 
+	optional string uniqueCode = 2; 
+	optional string updatePairs = 3; 
+}
+enum EAbortReason { 
+	option java_package = "life.genny.kogito.common.models.S2SData";
+	CANCEL = 0;
+	TIMEOUT = 2;
+	NONE = 1;
+}

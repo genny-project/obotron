@@ -1,0 +1,26 @@
+version: '2.3'
+
+services:
+  prd_obotron:
+    image: gennyproject/prd_obotron:latest
+    container_name: prd_obotron
+    hostname: prd_obotron
+    depends_on:
+      gadaq:
+        condition: service_healthy
+    env_file:
+      - ${ENV_FILE}
+    environment:
+      VIRTUAL_HOST: quarkus-obotron.genny.life
+      VIRTUAL_PORT: ${PRD_obotron_PORT}
+      GENNY_KOGITO_SERVICE_URL: http://alyson.genny.life:${PRD_OBOTRON_PORT}
+      GENNY_GADAQ_SERVICE_URL: http://alyson.genny.life:${GADAQ_PORT}    
+    ports:
+      - "${PRD_obotron_PORT}:${PRD_obotron_INTERNAL_PORT}"
+    networks:
+      - mainproxy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/q/health/ready"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
